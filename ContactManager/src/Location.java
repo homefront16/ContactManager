@@ -1,4 +1,11 @@
-
+/*
+	Name: Raymond Popsie
+	Date: 9/28/2020
+	File: Location.Java
+	Purpose: This class will be responsible holding location information such as
+	location ID, street, city, and state. The location class will be used throughout
+	the contact classes. 
+*/
 public class Location {
 	
 	private int locationID;

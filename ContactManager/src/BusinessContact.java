@@ -1,3 +1,12 @@
+/*
+	Name: Raymond Popsie
+	Date: 9/28/2020
+	File: BusinessContact.Java
+	Purpose: This class will be responsible business contacts. Business contacts
+	will have a business hours, days, business phone number, and photographs. 
+*/
+
+import java.util.List;
 
 public class BusinessContact extends BaseContact{
 	
@@ -5,11 +14,13 @@ public class BusinessContact extends BaseContact{
 		private String businessDays;
 		private String websiteURL;
 		
-		public BusinessContact(String businessHours, String businessDays, String websiteURL) {
-			super();
+		public BusinessContact(String businessHours, String businessDays, String websiteURL, int phoneNumber, List<Photo> photographs) {
+			
 			this.businessHours = businessHours;
 			this.businessDays = businessDays;
 			this.websiteURL = websiteURL;
+			this.phoneNumber = phoneNumber;
+			this.photographs = photographs;
 		}
 		
 		public String getBusinessHours() {

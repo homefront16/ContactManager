@@ -1,4 +1,11 @@
-
+/*
+	Name: Raymond Popsie
+	Date: 9/28/2020
+	File: Photo.Java
+	Purpose: This class will be responsible holding personal contact
+	information such as date of birth, list of relatives, 
+	name, photographs, location, and description.  
+*/
 public class Photo {
 	private int photoID;
 	private String fileName;

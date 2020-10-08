@@ -1,3 +1,12 @@
+/*
+	Name: Raymond Popsie
+	Date: 9/28/2020
+	File: PersonContact.Java
+	Purpose: This class will be responsible holding personal contact
+	information such as date of birth, list of relatives, 
+	name, photographs, location, and description.  
+*/
+import java.util.List;
 
 public class PersonContact extends BaseContact{
 	
@@ -6,9 +15,12 @@ public class PersonContact extends BaseContact{
 	private PersonContact[] relatives;
 	
 	
-	public PersonContact(String dateOfBirth, String description) {
-		super();
+	public PersonContact(String name, int phoneNumber, String dateOfBirth, List<Photo> photographs, Location location, String description) {
+		this.name = name;
+		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
+		this.photographs = photographs;
+		this.location = location;
 		this.description = description;
 	}
 	
@@ -30,6 +42,13 @@ public class PersonContact extends BaseContact{
 	}
 	public void setRelatives(PersonContact[] relatives) {
 		this.relatives = relatives;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
