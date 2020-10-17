@@ -6,6 +6,7 @@
 	will have a business hours, days, business phone number, and photographs. 
 */
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class BusinessContact extends BaseContact{

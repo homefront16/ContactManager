@@ -6,6 +6,7 @@
 	will have a number, name, phone, list of photographs, and a location. 
 */
 
+import java.math.BigInteger;
 import java.util.List;
 
 public abstract class BaseContact {

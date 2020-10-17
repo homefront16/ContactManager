@@ -6,7 +6,9 @@
 	information such as date of birth, list of relatives, 
 	name, photographs, location, and description.  
 */
+import java.math.BigInteger;
 import java.util.List;
+import java.util.Scanner;
 
 public class PersonContact extends BaseContact{
 	
@@ -24,6 +26,11 @@ public class PersonContact extends BaseContact{
 		this.description = description;
 	}
 	
+	public int userChoice() {
+		Scanner myScanner = new Scanner(System.in);
+		int userInput = myScanner.nextInt();
+		return userInput;
+	}
 	
 	public String getDateOfBirth() {
 		return dateOfBirth;
