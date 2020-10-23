@@ -1,3 +1,5 @@
+import java.util.List;
+
 /*
 	Name: Raymond Popsie
 	Date: 9/28/2020
@@ -6,7 +8,7 @@
 	will use. Reading all contacts and saving all contacts. 
 */
 public interface DataAccessService {
-	public void readAllContacts();
+	public List<BaseContact> readAllContacts();
 	public void saveAllContacts();
 	
 }

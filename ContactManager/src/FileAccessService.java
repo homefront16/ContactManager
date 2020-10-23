@@ -3,12 +3,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -22,36 +22,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class FileAccessService implements DataAccessService{
 
 	@Override
-	public void readAllContacts() {
-		
-		//AddressBook theAddressBook = new AddressBook();
-		/*
-		 * List<PersonContact> listOfPersonContacts = new ArrayList<PersonContact>();
-		 * 
-		 * try { listOfPersonContacts = new
-		 * ObjectMapper().readerFor(PersonContact.class).readValue(new
-		 * File("MOCK_DATA.json"));
-		 * 
-		 * } catch (IOException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace();
-		 * 
-		 * }
-		 */
-		
-	}
-	
-	public List<Location> readAllPersonContacts() throws FileNotFoundException{
+	public List<BaseContact> readAllContacts() {
 
-		
-	
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			InputStream inputStream = new FileInputStream(new File("locations.json"));
+			//InputStream inputStream = new FileInputStream(new File("PersonContactCorrect.json"));
+			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 
-			TypeReference<List<Location>> typeReference = new TypeReference<List<Location>>() {};
-			List<Location> locations = mapper.readValue(inputStream, typeReference);
+			ContactsWrapper contactsWrapper = new ObjectMapper().readerFor(ContactsWrapper.class).readValue(new File("PersonContactCorrect.json"));
+
+			//TypeReference<List<BaseContact>> typeReference = new TypeReference<List<BaseContact>>() {};
+			//List<BaseContact> personContacts = mapper.readValue(new File("PersonContactCorrect.json"), typeReference);
 			
-			return locations;
+			return contactsWrapper.getContactList();
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,39 +51,89 @@ public class FileAccessService implements DataAccessService{
 		
 	}
 	
-	public List<BaseContact> readAllPersonContacts2() throws FileNotFoundException{
-
-		
-		
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			InputStream inputStream = new FileInputStream(new File("PersonContactCorrect3.json"));
-
-			TypeReference<List<BaseContact>> typeReference = new TypeReference<List<BaseContact>>() {};
-			List<BaseContact> personContacts = mapper.readValue(inputStream, typeReference);
-			
-			return personContacts;
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+	/*
+	 * public List<Location> readAllPersonContacts() throws FileNotFoundException{
+	 * 
+	 * 
+	 * 
+	 * try { ObjectMapper mapper = new ObjectMapper(); InputStream inputStream = new
+	 * FileInputStream(new File("locations.json"));
+	 * 
+	 * TypeReference<List<Location>> typeReference = new
+	 * TypeReference<List<Location>>() {}; List<Location> locations =
+	 * mapper.readValue(inputStream, typeReference);
+	 * 
+	 * return locations; } catch (JsonParseException e) { // TODO Auto-generated
+	 * catch block e.printStackTrace();
+	 * 
+	 * } catch (JsonMappingException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated catch
+	 * block e.printStackTrace(); }
+	 * 
+	 * return null;
+	 * 
+	 * }
+	 */
 	
-		return null;
-		
-	}
+	/*
+	 * public List<BaseContact> readContacts() throws FileNotFoundException{
+	 * 
+	 * 
+	 * 
+	 * try { ObjectMapper mapper = new ObjectMapper(); //InputStream inputStream =
+	 * new FileInputStream(new File("PersonContactCorrect.json"));
+	 * mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+	 * 
+	 * ContactsWrapper contactsWrapper = new
+	 * ObjectMapper().readerFor(ContactsWrapper.class).readValue(new
+	 * File("PersonContactCorrect.json"));
+	 * 
+	 * //TypeReference<List<BaseContact>> typeReference = new
+	 * TypeReference<List<BaseContact>>() {}; //List<BaseContact> personContacts =
+	 * mapper.readValue(new File("PersonContactCorrect.json"), typeReference);
+	 * 
+	 * return contactsWrapper.getContactList(); } catch (JsonParseException e) { //
+	 * TODO Auto-generated catch block e.printStackTrace();
+	 * 
+	 * } catch (JsonMappingException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated catch
+	 * block e.printStackTrace(); }
+	 * 
+	 * return null;
+	 * 
+	 * }
+	 */
 	
 		public void writeAllData(AddressBook theBook) {
 		ObjectMapper om = new ObjectMapper();
 		
+		
+		ContactsWrapper contactsWrapper = new ContactsWrapper();
+		contactsWrapper.setContactList(theBook.getContactList());
+		
 		try {
-			om.writerWithDefaultPrettyPrinter().writeValue(new File("PersonContactCorrect.json"), theBook);
+			om.writerWithDefaultPrettyPrinter().writeValue(new File("PersonContactCorrect.json"), contactsWrapper);
+		} catch (JsonGenerationException e) {
+		
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+		
+			e.printStackTrace();
+		} catch (IOException e) {
+	
+			e.printStackTrace();
+		}
+	}
+
+	public void saveAllContacts(AddressBook theBook) {
+
+		ObjectMapper om = new ObjectMapper();
+		
+		ContactsWrapper contactsWrapper = new ContactsWrapper();
+		contactsWrapper.setContactList(theBook.getContactList());
+		
+		try {
+			om.writerWithDefaultPrettyPrinter().writeValue(new File("PersonContactCorrect.json"), contactsWrapper);
 		} catch (JsonGenerationException e) {
 		
 			e.printStackTrace();

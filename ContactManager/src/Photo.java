@@ -21,8 +21,10 @@ public class Photo {
 		this.dateOfPhoto = dateOfPhoto;
 		this.description = description;
 	}
-	
-	
+
+	public Photo() {
+	}
+
 	public int getPhotoID() {
 		return photoID;
 	}

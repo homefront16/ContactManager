@@ -1,3 +1,5 @@
+import java.util.List;
+
 /*
 	Name: Raymond Popsie
 	Date: 9/28/2020
@@ -8,9 +10,9 @@
 public class DatabaseAccessService implements DataAccessService{
 
 	@Override
-	public void readAllContacts() {
+	public List<BaseContact> readAllContacts() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
@@ -18,5 +20,6 @@ public class DatabaseAccessService implements DataAccessService{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

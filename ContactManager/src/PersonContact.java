@@ -6,12 +6,16 @@
 	information such as date of birth, list of relatives, 
 	name, photographs, location, and description.  
 */
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
+
+
+@JsonTypeName("PersonContact")
 public class PersonContact extends BaseContact{
 	
 	private String dateOfBirth;
@@ -34,6 +38,9 @@ public class PersonContact extends BaseContact{
 		this.description = description;
 		
 		//photographs2.addAll(photographs);
+		
+	}
+	public PersonContact() {
 		
 	}
 	

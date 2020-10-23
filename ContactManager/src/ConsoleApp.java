@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.apache.commons.io.FileUtils;
 
 /*
 	Name: Raymond Popsie
@@ -18,33 +17,12 @@ import org.apache.commons.io.FileUtils;
 public class ConsoleApp {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		
-		//List<Location> theLocations = new ArrayList<Location>();
-		//Location theLocation = new Location();
-		
-		 List<BaseContact> theList = new ArrayList<BaseContact>(); 
+
+		 List<BaseContact> listOfContacts = new ArrayList<BaseContact>(); 
 		 FileAccessService FAS = new FileAccessService();
 		 
-		 theList = FAS.readAllPersonContacts2();
-		  
-			/*
-			 * for(int i = 0; i < theList.size(); i++) {
-			 * System.out.println(theList.get(i).name);
-			 * System.out.println("==============================================="); }
-			 */
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		 listOfContacts = FAS.readAllContacts();
+
 		
 		Photo testPhoto = new Photo(1, "profilePhoto.jpg", "01-10-2020",
 		"Photo for profile"); 
@@ -55,42 +33,9 @@ public class ConsoleApp {
 		 
 		 PersonContact testPerson = new PersonContact("Frank Lucas", "4763243", "10-1-1991", testListPhotographs, testLocation, "This is my test persons description");
 		 
-		List<BaseContact> myPersonContactList = new LinkedList<BaseContact>();
-		myPersonContactList.add(testPerson); 
-		AddressBook myAddressBook = new AddressBook(myPersonContactList);
+		listOfContacts.add(testPerson); 
+		AddressBook myAddressBook = new AddressBook(listOfContacts);
 		 
-		myAddressBook.displayPerson(0);
-		
-		//FileAccessService FAS = new FileAccessService();
-		
-		
-		
-		//System.exit(0);
-		//System.out.println("=================================");
-		
-		/*
-		 * File file = new File("testFile.txt"); try { List lines =
-		 * FileUtils.readLines(file, "UTF-8"); for(int i = 0; i < lines.size(); i++) {
-		 * System.out.println(lines.get(i)); lines.spliterator(); } } catch (IOException
-		 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
-		 */
-		
-		/*
-		 * myAddressBook.changePersonName(0, "Whitney Houston");
-		 * myAddressBook.displayPerson(0);
-		 * System.out.println("=================================");
-		 * System.out.println(myAddressBook.getPersonContacts().size());
-		 * System.out.println("=================================");
-		 * myAddressBook.removePerson(0);
-		 * System.out.println(myAddressBook.getPersonContacts().size());
-		 * System.out.println("=================================");
-		 * myAddressBook.addPerson(testPerson);
-		 * System.out.println(myAddressBook.getPersonContacts().size());
-		 * System.out.println("=================================");
-		 * myAddressBook.searchpersonByName(0, "Whitney Houston");
-		 * System.out.println("=================================");
-		 * myAddressBook.searchPersonByCity(0, "Gilbert");
-		 */
 		
 		/* This myScanner will be opened to receive input from a user */
 		Scanner myScanner = new Scanner(System.in);
@@ -147,24 +92,24 @@ public class ConsoleApp {
 				PersonContact userContact = new PersonContact(name, phoneNumber, userDateOfBirth, 
 						userPhotographs, userLocation, contactDescription);
 				
-				myPersonContactList.add(userContact);
+				listOfContacts.add(userContact);
 				
 				
 				
 				break;
 				
 			case 2: userInput = 2;
-				if (myPersonContactList.size() < 1) {
+				if (listOfContacts.size() < 1) {
 					System.out.println("There is no one in your contact list. Please "
 							+ "add a contact before listing all of your contacts");
 					break;
 				}
-				for(int i = 0; i < myPersonContactList.size(); i++) {
-					System.out.println(myPersonContactList.get(i).getName());
-					System.out.println(myPersonContactList.get(i).getPhoneNumber());
-					System.out.println(myPersonContactList.get(i).getLocation().getStreet());
-					System.out.println(myPersonContactList.get(i).getLocation().getCity());
-					System.out.println(myPersonContactList.get(i).getLocation().getState());
+				for(int i = 0; i < listOfContacts.size(); i++) {
+					System.out.println(listOfContacts.get(i).getName());
+					System.out.println(listOfContacts.get(i).getPhoneNumber());
+					System.out.println(listOfContacts.get(i).getLocation().getStreet());
+					System.out.println(listOfContacts.get(i).getLocation().getCity());
+					System.out.println(listOfContacts.get(i).getLocation().getState());
 					System.out.println("==============");
 				}
 				break;
@@ -207,13 +152,8 @@ public class ConsoleApp {
 			userWorking = false; 
 			myScanner.close(); 
 			break;
-		}
-
-		
-		
-			
-		
+		}	
 	}
-		FAS.writeAllData(myAddressBook);
+		FAS.saveAllContacts(myAddressBook);
 
 }}

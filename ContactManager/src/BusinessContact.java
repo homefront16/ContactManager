@@ -8,6 +8,10 @@
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+@JsonTypeName("BusinessContact")
 public class BusinessContact extends BaseContact{
 	
 		private String businessHours;
@@ -21,6 +25,10 @@ public class BusinessContact extends BaseContact{
 			this.websiteURL = websiteURL;
 			this.phoneNumber = phoneNumber;
 			this.photographs = photographs;
+		}
+		
+		public BusinessContact() {
+			
 		}
 		
 		public String getBusinessHours() {
