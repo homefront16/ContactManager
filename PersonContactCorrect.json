@@ -1,0 +1,77 @@
+{
+  "contactList" : [ {
+    "type" : "PersonContact",
+    "name" : "Frank Lucas",
+    "phoneNumber" : "4763243",
+    "photographs" : [ {
+      "photoID" : 1,
+      "fileName" : "profilePhoto.jpg",
+      "dateOfPhoto" : "01-10-2020",
+      "description" : "Photo for profile"
+    } ],
+    "location" : {
+      "locationID" : 0,
+      "street" : "Recker Rd",
+      "city" : "Gilbert",
+      "state" : "Arizona"
+    },
+    "dateOfBirth" : "10-1-1991",
+    "description" : "This is my test persons description"
+  }, {
+    "type" : "PersonContact",
+    "name" : "Bill",
+    "phoneNumber" : "2021122323",
+    "photographs" : [ {
+      "photoID" : 1,
+      "fileName" : "file.com",
+      "dateOfPhoto" : "10-10-2020",
+      "description" : "FunnyPic"
+    } ],
+    "location" : {
+      "locationID" : 1,
+      "street" : "Otter",
+      "city" : "Concord",
+      "state" : "NH"
+    },
+    "dateOfBirth" : "10-09-1980",
+    "description" : "Funny"
+  } ],
+  "businessContacts" : [ ],
+  "personContacts" : [ {
+    "type" : "PersonContact",
+    "name" : "Frank Lucas",
+    "phoneNumber" : "4763243",
+    "photographs" : [ {
+      "photoID" : 1,
+      "fileName" : "profilePhoto.jpg",
+      "dateOfPhoto" : "01-10-2020",
+      "description" : "Photo for profile"
+    } ],
+    "location" : {
+      "locationID" : 0,
+      "street" : "Recker Rd",
+      "city" : "Gilbert",
+      "state" : "Arizona"
+    },
+    "dateOfBirth" : "10-1-1991",
+    "description" : "This is my test persons description"
+  }, {
+    "type" : "PersonContact",
+    "name" : "Bill",
+    "phoneNumber" : "2021122323",
+    "photographs" : [ {
+      "photoID" : 1,
+      "fileName" : "file.com",
+      "dateOfPhoto" : "10-10-2020",
+      "description" : "FunnyPic"
+    } ],
+    "location" : {
+      "locationID" : 1,
+      "street" : "Otter",
+      "city" : "Concord",
+      "state" : "NH"
+    },
+    "dateOfBirth" : "10-09-1980",
+    "description" : "Funny"
+  } ]
+}

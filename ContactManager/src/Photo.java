@@ -1,3 +1,5 @@
+import java.util.List;
+
 /*
 	Name: Raymond Popsie
 	Date: 9/28/2020
@@ -19,6 +21,7 @@ public class Photo {
 		this.dateOfPhoto = dateOfPhoto;
 		this.description = description;
 	}
+	
 	
 	public int getPhotoID() {
 		return photoID;

@@ -1,9 +1,12 @@
-import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+
+import org.apache.commons.io.FileUtils;
 
 /*
 	Name: Raymond Popsie
@@ -14,22 +17,64 @@ import java.util.Scanner;
 */
 public class ConsoleApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		
-		Photo testPhoto = new Photo(1, "profilePhoto.jpg", "01-10-2020", "Photo for profile");
-		List<Photo> testListPhotographs = new LinkedList<Photo>();
+		//List<Location> theLocations = new ArrayList<Location>();
+		//Location theLocation = new Location();
+		
+		 List<BaseContact> theList = new ArrayList<BaseContact>(); 
+		 FileAccessService FAS = new FileAccessService();
+		 
+		 theList = FAS.readAllPersonContacts2();
+		  
+			/*
+			 * for(int i = 0; i < theList.size(); i++) {
+			 * System.out.println(theList.get(i).name);
+			 * System.out.println("==============================================="); }
+			 */
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		Photo testPhoto = new Photo(1, "profilePhoto.jpg", "01-10-2020",
+		"Photo for profile"); 
+		List<Photo> testListPhotographs = new LinkedList<Photo>(); 
 		testListPhotographs.add(testPhoto);
 		
-		Location testLocation = new Location(0, "Recker Rd", "Gilbert", "Arizona");
-		PersonContact testPerson = new PersonContact("Frank Lucas", 4763243, "10-1-1991", testListPhotographs,
-				testLocation, "This is my test persons description");
-		
-		List<PersonContact> myPersonContactList = new LinkedList<PersonContact>();
-		myPersonContactList.add(testPerson);
+		 Location testLocation = new Location(0, "Recker Rd", "Gilbert", "Arizona");
+		 
+		 PersonContact testPerson = new PersonContact("Frank Lucas", "4763243", "10-1-1991", testListPhotographs, testLocation, "This is my test persons description");
+		 
+		List<BaseContact> myPersonContactList = new LinkedList<BaseContact>();
+		myPersonContactList.add(testPerson); 
 		AddressBook myAddressBook = new AddressBook(myPersonContactList);
+		 
+		myAddressBook.displayPerson(0);
 		
-		//myAddressBook.displayPerson(0);
-		System.out.println("=================================");
+		//FileAccessService FAS = new FileAccessService();
+		
+		
+		
+		//System.exit(0);
+		//System.out.println("=================================");
+		
+		/*
+		 * File file = new File("testFile.txt"); try { List lines =
+		 * FileUtils.readLines(file, "UTF-8"); for(int i = 0; i < lines.size(); i++) {
+		 * System.out.println(lines.get(i)); lines.spliterator(); } } catch (IOException
+		 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
+		 */
+		
 		/*
 		 * myAddressBook.changePersonName(0, "Whitney Houston");
 		 * myAddressBook.displayPerson(0);
@@ -93,7 +138,7 @@ public class ConsoleApp {
 				System.out.println("Please enter the name of your contact");
 				String name = myScanner.next();
 				System.out.println("Please enter your phone number");
-				int phoneNumber = myScanner.nextInt();
+				String phoneNumber = myScanner.next();
 				System.out.println("Please enter the date of birth of your contact");
 				String userDateOfBirth = myScanner.next();
 				System.out.println("Please enter a description of your contact");
@@ -103,7 +148,7 @@ public class ConsoleApp {
 						userPhotographs, userLocation, contactDescription);
 				
 				myPersonContactList.add(userContact);
-
+				
 				
 				
 				break;
@@ -116,8 +161,10 @@ public class ConsoleApp {
 				}
 				for(int i = 0; i < myPersonContactList.size(); i++) {
 					System.out.println(myPersonContactList.get(i).getName());
-					System.out.println(myPersonContactList.get(i).getDateOfBirth());
-					System.out.println(myPersonContactList.get(i).getDescription());
+					System.out.println(myPersonContactList.get(i).getPhoneNumber());
+					System.out.println(myPersonContactList.get(i).getLocation().getStreet());
+					System.out.println(myPersonContactList.get(i).getLocation().getCity());
+					System.out.println(myPersonContactList.get(i).getLocation().getState());
 					System.out.println("==============");
 				}
 				break;
@@ -164,8 +211,9 @@ public class ConsoleApp {
 
 		
 		
-		
+			
 		
 	}
+		FAS.writeAllData(myAddressBook);
 
 }}

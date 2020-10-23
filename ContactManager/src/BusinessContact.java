@@ -6,7 +6,6 @@
 	will have a business hours, days, business phone number, and photographs. 
 */
 
-import java.math.BigInteger;
 import java.util.List;
 
 public class BusinessContact extends BaseContact{
@@ -15,7 +14,7 @@ public class BusinessContact extends BaseContact{
 		private String businessDays;
 		private String websiteURL;
 		
-		public BusinessContact(String businessHours, String businessDays, String websiteURL, int phoneNumber, List<Photo> photographs) {
+		public BusinessContact(String businessHours, String businessDays, String websiteURL, String phoneNumber, List<Photo> photographs) {
 			
 			this.businessHours = businessHours;
 			this.businessDays = businessDays;

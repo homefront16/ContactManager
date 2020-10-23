@@ -1,0 +1,22 @@
+{
+  "personContacts" : [ {
+    "type" : "PersonContact",
+    "name" : "Frank Lucas",
+    "phoneNumber" : "4763243",
+    "dateOfBirth" : "10-1-1991",
+    "photographs" : [ {
+      "photoID" : 1,
+      "fileName" : "profilePhoto.jpg",
+      "dateOfPhoto" : "01-10-2020",
+      "description" : "Photo for profile"
+    } ],
+    "location" : {
+      "locationID" : 0,
+      "street" : "Recker Rd",
+      "city" : "Gilbert",
+      "state" : "Arizona"
+    },
+    "description" : "This is my test persons description"
+  } ],
+  "businessContacts" : null
+}

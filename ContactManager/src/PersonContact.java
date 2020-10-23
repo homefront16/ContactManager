@@ -6,24 +6,35 @@
 	information such as date of birth, list of relatives, 
 	name, photographs, location, and description.  
 */
-import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class PersonContact extends BaseContact{
 	
 	private String dateOfBirth;
 	private String description;
+	
+	
+	@JsonIgnore
 	private PersonContact[] relatives;
 	
 	
-	public PersonContact(String name, int phoneNumber, String dateOfBirth, List<Photo> photographs, Location location, String description) {
+	public PersonContact(String name, String phoneNumber, String dateOfBirth, List<Photo> photographs, Location location, String description) {
+		
+		
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
 		this.photographs = photographs;
+		//this.photographs.addAll(photographs);
 		this.location = location;
 		this.description = description;
+		
+		//photographs2.addAll(photographs);
+		
 	}
 	
 	public int userChoice() {
